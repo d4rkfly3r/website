@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAqFA,IAAK,CACD,gBAAgB,CAAE,OAAkB",
+"sources": ["../scss/default.scss"],
+"names": [],
+"file": "default.css"
+}
