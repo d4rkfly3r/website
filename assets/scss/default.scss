@@ -1,7 +1,12 @@
 @import "functions";
 @import "variables";
 @import "grid";
+@import "navbar";
 
 body {
   background-color: pastelize(0, 0, 255);
+}
+
+.content {
+  margin: 10px 25px;
 }

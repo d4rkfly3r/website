@@ -1,5 +1,18 @@
-<nav>
-    <button onclick="Router.route('home')">Home</button>
-    <button onclick="Router.route('contact')">Contact</button>
-    <button onclick="Router.route('home')">About</button>
+<nav role="navigation" id="nav">
+    <input class="trigger" type="checkbox" id="mainNavButton">
+    <label for="mainNavButton">Joshua Freedman</label>
+    <ul>
+        <li>
+            <a class="button" onclick="Router.route('home')">Home</a>
+        </li>
+        <li>
+            <a class="button" onclick="Router.route('projects')">Projects</a>
+        </li>
+        <li>
+            <a class="button" onclick="Router.route('about')">About</a>
+        </li>
+        <li>
+            <a class="button" onclick="Router.route('news')">News</a>
+        </li>
+    </ul>
 </nav>
