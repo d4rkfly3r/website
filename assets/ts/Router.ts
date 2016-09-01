@@ -1,20 +1,28 @@
 class Router {
 
-    private static pathPrefix: string;
-    // private static locationMap : <string,Function>;
+    static pathPrefix: string = "";
+    static locationMap: { [key: string]: Function; } = {};
 
     public static setDefaultRoute(pathPrefix: string) {
-        this.pathPrefix = pathPrefix;
-        window.location.hash = pathPrefix;
+        Router.pathPrefix = pathPrefix;
     }
 
     public static start() {
-        window.onhashchange = function(event) {
+        const path = window.location.hash.substr(Router.pathPrefix.length);
+        if (Router.locationMap[path] != null) {
+            Router.locationMap[path]();
+        }
 
+        window.onhashchange = function (event: HashChangeEvent) {
+            const location = (<Window>(event.target)).location;
+            const path = location.hash.substr(Router.pathPrefix.length);
+            if (Router.locationMap[path] != null) {
+                Router.locationMap[path]();
+            }
         }
     }
 
-    public static on(path: string, callback: Function){
-
+    public static on(path: string, callback: Function) {
+        Router.locationMap[path] = callback;
     }
 }

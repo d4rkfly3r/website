@@ -1,16 +1,26 @@
 var Router = (function () {
     function Router() {
     }
-    // private static locationMap : <string,Function>;
     Router.setDefaultRoute = function (pathPrefix) {
-        this.pathPrefix = pathPrefix;
-        window.location.hash = pathPrefix;
+        Router.pathPrefix = pathPrefix;
     };
     Router.start = function () {
+        var path = window.location.hash.substr(Router.pathPrefix.length);
+        if (Router.locationMap[path] != null) {
+            Router.locationMap[path]();
+        }
         window.onhashchange = function (event) {
+            var location = (event.target).location;
+            var path = location.hash.substr(Router.pathPrefix.length);
+            if (Router.locationMap[path] != null) {
+                Router.locationMap[path]();
+            }
         };
     };
     Router.on = function (path, callback) {
+        Router.locationMap[path] = callback;
     };
+    Router.pathPrefix = "";
+    Router.locationMap = {};
     return Router;
 }());

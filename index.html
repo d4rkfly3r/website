@@ -9,18 +9,25 @@
 </head>
 
 <body>
+<app></app>
+<script src="assets/js/Loader.js" charset="utf-8"></script>
+<script>
+    Loader.loadJS(["Router", "D4rkfly3r"], function () {
+        D4rkfly3r.setMountPoint('app');
 
-    <script src="assets/js/Loader.js" charset="utf-8"></script>
-    <script>
-        Loader.loadJS(["Router", "D4rkfly3r"], function() {
-            Router.setDefaultRoute("#!/");
-            Router.start();
+        Router.on("home", function () {
+            D4rkfly3r.mount('home');
         });
 
-        // Router.on("home", function() {
-        //     //TODO mount home!
-        // });
-    </script>
+        Router.on("contact", function () {
+            D4rkfly3r.mount('contact');
+        });
+
+        Router.setDefaultRoute("#!/");
+        Router.start();
+    });
+
+</script>
 </body>
 
 </html>
